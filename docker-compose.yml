@@ -1,0 +1,14 @@
+version: '3.8'  # Specify the version of Docker Compose
+
+services:
+  my_app:  # Name of the service
+    build:
+      context: .  # Path to the directory containing the Dockerfile
+      dockerfile: Dockerfile  # Name of the Dockerfile if it's not the default
+    volumes:
+      - .:/usr/src/app  # Mount the current directory to the container
+    environment:
+      - TZ=Asia/Tehran  # Set the timezone environment variable
+    ports:
+      - "8000:8000"  # Map port 8000 of the host to port 8000 of the container
+    command: ["bash", "exec.sh"]  # Command to run when the container starts
